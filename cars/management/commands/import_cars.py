@@ -65,7 +65,17 @@ class Command(BaseCommand):
                         sale_title_type=row.get('sale_title_type', ''),
                         has_keys=str(row.get('has_keys', '')).upper() == 'YES',
                         odometer=int(float(row['odometer'])) if pd.notna(row.get('odometer')) else None,
-                        image_url=row.get('image_url', '')
+                        image_url=row.get('image_url', ''),
+                        # New fields
+                        day_of_week=row['day_of_week'] if pd.notna(row['day_of_week']) else None,
+                        special_note=row['special_note'] if pd.notna(row['special_note']) else None,
+                        location_country=row['location_country'] if pd.notna(row['location_country']) else None,
+                        currency_code=row['currency_code'] if pd.notna(row['currency_code']) else None,
+                        image_thumbnail=row['image_thumbnail'] if pd.notna(row['image_thumbnail']) else None,
+                        grid_row=row['grid_row'] if pd.notna(row['grid_row']) else None,
+                        make_an_offer_eligible=str(row['make_an_offer_eligible']).upper() == 'Y',
+                        buy_it_now_price=float(row['Buy-It-Now Price']) if pd.notna(row['Buy-It-Now Price']) else None,
+                        trim=row['trim'] if pd.notna(row['trim']) else None,
                     )
                     success_count += 1
                     if success_count % 100 == 0:  # Progress indicator

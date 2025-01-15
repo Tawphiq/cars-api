@@ -33,6 +33,15 @@ class Car(models.Model):
     location_zip = models.CharField(max_length=10, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     image_url = models.URLField(max_length=500, null=True, blank=True)
+    day_of_week = models.CharField(max_length=10, null=True, blank=True)
+    special_note = models.TextField(null=True, blank=True)
+    location_country = models.CharField(max_length=100, null=True, blank=True)
+    currency_code = models.CharField(max_length=3, null=True, blank=True)
+    image_thumbnail = models.URLField(max_length=500, null=True, blank=True)
+    grid_row = models.CharField(max_length=20, null=True, blank=True)
+    make_an_offer_eligible = models.BooleanField(default=False)
+    buy_it_now_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    trim = models.CharField(max_length=100, null=True, blank=True)
     
     class Meta:
         ordering = ['-created_at']
